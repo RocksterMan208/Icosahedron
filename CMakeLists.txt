@@ -33,3 +33,11 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     glfw
     glm::glm
 )
+
+install(TARGETS ${PROJECT_NAME}
+    RUNTIME DESTINATION bin
+)
+
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/resources
+    DESTINATION bin
+)

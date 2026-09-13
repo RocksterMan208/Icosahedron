@@ -47,7 +47,7 @@ int main()
     glCullFace(GL_BACK);
 
     Icosahedron test(0);
-    Camera camera(screenW, screenH, glm::vec3(0.0f, 0.0f, 0.0f));
+    Camera camera(screenW, screenH, glm::vec3(0.0f, 0.0f, 4.0f));
 
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
