@@ -12,6 +12,7 @@
 #include<GLFW/glfw3.h>
 
 int subdivisions = 1;
+bool wireFrame = WIREFRAME_OFF;
 
 void setGLFWHint()
 {
@@ -46,7 +47,7 @@ int main()
     glEnable(GL_CULL_FACE);
     glCullFace(GL_BACK);
 
-    Icosahedron test(0);
+    Icosahedron test(1);
     Camera camera(screenW, screenH, glm::vec3(0.0f, 0.0f, 4.0f));
 
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -54,7 +55,7 @@ int main()
     while(!glfwWindowShouldClose(window))
     {
         glfwPollEvents();
-        startImGuiFrame(&camera, &subdivisions);
+        startImGuiFrame(&camera, &subdivisions, &wireFrame);
 
         waitForEscape(window);
         
@@ -73,7 +74,8 @@ int main()
 
         glm::mat4 model = glm::mat4(1.0f);
 
-        test.draw();
+        test.draw(wireFrame);
+
         camera.Matrix(fov, 0.1f, 100.0f, shaderProgram, "camMatrix", model);
         
         endImGuiFrame();

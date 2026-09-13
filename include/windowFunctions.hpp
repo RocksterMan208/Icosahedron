@@ -62,7 +62,7 @@ void initImGui(GLFWwindow* window) // Place after window creation/initialization
     ImGui_ImplOpenGL3_Init();
 }
 
-void startImGuiFrame(Camera* camera, int* subdivisions)
+void startImGuiFrame(Camera* camera, int* subdivisions, bool* wireFrame)
 {
 ImGui_ImplOpenGL3_NewFrame();
 ImGui_ImplGlfw_NewFrame();
@@ -76,6 +76,9 @@ ImGui_ImplGlfw_NewFrame();
 
     ImGui::Text("Subdivisions:");
     ImGui::DragInt("Amount", subdivisions, 0, 0, 10);
+
+    ImGui::Text("Wireframe:");
+    ImGui::Checkbox("Toggle", wireFrame);
 
     ImGui::End();
 }

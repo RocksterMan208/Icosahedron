@@ -136,11 +136,18 @@ void Icosahedron::uploadToGL()
     vao.Unbind();
 }
 
-void Icosahedron::draw()
+void Icosahedron::draw(int toggleWireFrame)
 {
     vao.Bind();
 
-    glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, 0);
+    if (toggleWireFrame)
+    {
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, 0);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    }
+    else glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, 0);
 
     vao.Unbind();
 }
+
