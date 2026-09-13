@@ -1,8 +1,5 @@
-# This is a base OpenGL boiler plate code that I will use for projects.
-### This program will open a window, handle all shaders through the use of a shader class.
-### It will also handle all buffers through the use of a buffers header file (VAO, VBO, EBO).
-
-#
+# This is an implementation of using icosahedrons for generating sphere meshes.
+### This is done through subdividing a base icosahedron a set number of times and then uploading the finished mesh to OpenGL for rendering
 
 # Compilation
 Compilation is handled through CMmake, but the following libraries are still required:
