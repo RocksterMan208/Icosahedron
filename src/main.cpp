@@ -11,6 +11,8 @@
 #include<glad/glad.h>
 #include<GLFW/glfw3.h>
 
+int subdivisions = 1;
+
 void setGLFWHint()
 {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -52,7 +54,7 @@ int main()
     while(!glfwWindowShouldClose(window))
     {
         glfwPollEvents();
-        startImGuiFrame(&camera);
+        startImGuiFrame(&camera, &subdivisions);
 
         waitForEscape(window);
         
@@ -60,7 +62,8 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         shaderProgram.Activate();
-        camera.ProcessInputs(window);
+        
+        if (!mouseToggle(window, GLFW_KEY_X)) camera.ProcessInputs(window);
 
         glm::mat4 model = glm::mat4(1.0f);
 
