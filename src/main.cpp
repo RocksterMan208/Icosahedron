@@ -46,7 +46,7 @@ int main()
     glEnable(GL_CULL_FACE);
     glCullFace(GL_BACK);
 
-    Icosahedron test;
+    Icosahedron test(0);
     Camera camera(screenW, screenH, glm::vec3(0.0f, 0.0f, 0.0f));
 
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -64,6 +64,12 @@ int main()
         shaderProgram.Activate();
         
         if (!mouseToggle(window, GLFW_KEY_X)) camera.ProcessInputs(window);
+
+        if(checkChangeF(subdivisions)) 
+        {
+            test.generate(subdivisions);
+            test.uploadToGL();
+        }
 
         glm::mat4 model = glm::mat4(1.0f);
 

@@ -62,12 +62,11 @@ void initImGui(GLFWwindow* window) // Place after window creation/initialization
     ImGui_ImplOpenGL3_Init();
 }
 
-void startImGuiFrame(Camera* camera, int* subdivisions) // Place after pollEvents() function
+void startImGuiFrame(Camera* camera, int* subdivisions)
 {
-    ImGui_ImplOpenGL3_NewFrame();
-    ImGui_ImplGlfw_NewFrame();
+ImGui_ImplOpenGL3_NewFrame();
+ImGui_ImplGlfw_NewFrame();
     ImGui::NewFrame();
-    
     ImGui::Begin("Icosahedron");
 
     ImGui::Text("Camera Position:");
@@ -76,7 +75,7 @@ void startImGuiFrame(Camera* camera, int* subdivisions) // Place after pollEvent
     ImGui::DragFloat("Z", &camera->position.z, 1.0f, -FLT_MAX, FLT_MAX, "%.3f");
 
     ImGui::Text("Subdivisions:");
-    ImGui::DragInt("Amount", subdivisions, 1, 0, INT_MAX);
+    ImGui::DragInt("Amount", subdivisions, 0, 0, 10);
 
     ImGui::End();
 }
